@@ -18,7 +18,7 @@ def count_letters():
 
         results = {}
         for char in lower_file_contents:
-            if char in "abcdefghijklmnopqrstuvwxyz":
+            if char.isalpha():
                 if char in results:
                     results[char] += 1
                 else:
@@ -26,5 +26,20 @@ def count_letters():
 
         return results
 
-print(f"Number of words in document: {count_words()}")
-print(f"Number of letters in document: {count_letters()}")
+def sort_on(dict):
+    return dict["num"]
+
+print("--- Begin report of books/frankenstein.txt ---")
+print(f"{count_words()} words found in the document")
+print("")
+
+output = []
+letters = count_letters()
+for letter in letters:
+    output.append({"name": letter, "num": letters[letter]})
+
+output.sort(reverse=True, key=sort_on)
+
+for value in output:
+    print(f"The '{value["name"]}' character was found {value["num"]} times")
+print("--- End report ---")
