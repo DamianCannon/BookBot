@@ -18,10 +18,11 @@ def count_letters():
 
         results = {}
         for char in lower_file_contents:
-            if char in results:
-                results[char] += 1
-            else:
-                results[char] = 1
+            if char in "abcdefghijklmnopqrstuvwxyz":
+                if char in results:
+                    results[char] += 1
+                else:
+                    results[char] = 1
 
         return results
 
